@@ -8,3 +8,5 @@ router.get('/', contactusJs.allContacts);
 router.post('/new', contactusJs.contactUs);
 router.get('/find/:contactId', contactusJs.contactDetails);
 router.delete('/delete/:contactId', contactusJs.deleteContact);
+
+export default router;
