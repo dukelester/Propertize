@@ -6,6 +6,7 @@ import agentsRouter from '../routes/agents.js';
 import contactRouter from '../routes/contactus.js';
 import usersRouter from '../routes/users.js';
 import authRouter from '../routes/auth.js';
+import propertyRouter from '../routes/property.js';
 
 const createServer = () => {
   const app = express();
@@ -15,6 +16,7 @@ const createServer = () => {
   app.use('/contact-us', contactRouter);
   app.use('/users', usersRouter);
   app.use('/auth', authRouter);
+  app.use('/', propertyRouter);
   return app;
 };
 
