@@ -1,10 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import express from 'express';
+
 import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-const app = express();
+
 const port = process.env.PORT;
 
 app.listen(port, (error) => {
