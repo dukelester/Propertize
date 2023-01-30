@@ -61,6 +61,10 @@ const PropertySchema = new Schema({
   propertyFor: {
     type: String, // rent, buy, build
   },
+  category: {
+    type: String,
+    required: true,
+  },
 }, { timestamps: true });
 
 export default mongoose.model('Property', PropertySchema);
