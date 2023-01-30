@@ -18,5 +18,7 @@ app.listen(port, (error) => {
 });
 
 app.get('/', (req, res) => {
-  res.send('<h2>here we go</h2>');
+  res.send({
+    message: 'duke lester is guru',
+  });
 });
