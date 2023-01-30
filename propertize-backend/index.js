@@ -32,9 +32,3 @@ app.listen(port, (error) => {
   dbConnect();
   console.log(`The server is running at http://localhost:${port}`);
 });
-
-app.get('/', (req, res) => {
-  res.send({
-    message: 'duke lester is guru',
-  });
-});

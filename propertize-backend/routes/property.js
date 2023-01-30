@@ -1,7 +1,8 @@
+/* eslint-disable import/extensions */
 import express from 'express';
 import {
   createProperty, deleteProperty, getAllProperties, getPropertyById, updateProperty,
-} from '../controllers/property';
+} from '../controllers/property.js';
 
 const router = express.Router();
 
