@@ -1,6 +1,5 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-extraneous-dependencies */
-
 import * as dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
@@ -20,8 +19,8 @@ mongoose.connection.on('disconnected', async (error) => {
   await mongoose.connection.close();
 });
 
-const dbConnect = async () => {
-  await mongoose.connect(process.env.MONGO);
+const dbConnect = () => {
+  mongoose.connect(process.env.MONGO);
 };
 
 const port = process.env.PORT;
