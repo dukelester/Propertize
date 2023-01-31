@@ -31,6 +31,16 @@ export const contactDetails = async (req, res, next) => {
   }
 };
 
-export const deleteContact = (req, res, next) => {
-  res.send({ message: 'Deleet contact' });
+export const deleteContact = async (req, res, next) => {
+  try {
+    const { contactId } = req.params;
+    await Contact.findByIdAndDelete(contactId);
+    res.status(200).json({
+      status: 200,
+      success: true,
+      message: `Contact with the id ${contactId} has been deleted sucessfully!`,
+    });
+  } catch (error) {
+    next(error);
+  }
 };
