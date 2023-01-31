@@ -1,20 +1,54 @@
-/* eslint-disable no-unused-vars */
-export const createProperty = (req, res, next) => {
-  res.send({ message: 'Create new Property' });
+import Property from '../models/Property.js'
+
+export const createProperty = async (req, res, next) => {
+  try {
+    const newProperty = await Property.create(req.body);
+    const savedProperty = await newProperty.save();
+    res.status(201).json(savedProperty);
+  } catch (error) {
+      next(error);
+  };
 };
 
-export const getAllProperties = (req, res, next) => {
-  res.send({ message: 'All Properties' });
+export const getAllProperties = async (req, res, next) => {
+  try {
+   const allProperties = await Property.find();
+   res.status(200).json(allProperties);
+  } catch (error) {
+      next(error);
+  };
 };
 
-export const getPropertyById = (req, res, next) => {
-  res.send({ message: 'get Property details' });
+export const getPropertyById = async (req, res, next) => {
+  try {
+    const { propertyId } = req.params;
+    const foundProperty = await Property.findById(propertyId);
+    res.status(200).jsin(foundProperty);
+  } catch (error) {
+      next(error);
+  };
 };
 
-export const updateProperty = (req, res, next) => {
-  res.send({ message: 'update the Property details' });
+export const updateProperty = async (req, res, next) => {
+  try {
+    const { propertyId } = req.params;
+    const updatedProperty = await Property.findOneAndUpdate(propertyId, { $set: req.body }, { new: true });
+    res.status(200).json(updatedProperty);
+  } catch (error) {
+      next(error);
+  };
 };
 
-export const deleteProperty = (req, res, next) => {
-  res.send({ message: 'delete the Property details' });
+export const deleteProperty = async (req, res, next) => {
+  try {
+    const { propertyId } = req.params;
+    await Property.findByIdAndDelete(propertyId);
+    res.status(200).json({
+      status: 200,
+      success: true,
+      message: `Property with the id ${propertyId} has been deleted sucessfully!`,
+    })
+  } catch (error) {
+      next(error);
+  };
 };
