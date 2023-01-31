@@ -36,8 +36,27 @@ describe('Contact us route', () => {
         const contactId = '63d8a1282ce18a93fc4b4';
         const res = await request(app).get(`/api/contact-us/find/${contactId}`);
         expect(res.statusCode).toBe(500);
+        expect(res.body).toStrictEqual({});
     });
-
   });
-
+  describe('post request to /api/contact-us', () => {
+    describe('creating a contact to the api/contact-us/', () => {
+        it('should return an 200 status ok for a right data', async () => {
+            const res = await request(app).post(`/api/contact-us/new`)
+            .send({
+                "category": "House inquiry",
+                "subject": "Housing",
+                "name": "Master Ken",
+                "email": "kensmaster@gmail.com",
+                "phone": "0700507822",
+                "message": "What is the best price for a deposit and a nice house?"
+            });
+            expect(res.statusCode).toBe(201);
+            expect(res.body.category).toStrictEqual('House inquiry');
+            expect(res.body.name).toStrictEqual('Master Ken');
+            expect(res.body.email).toStrictEqual('kensmaster@gmail.com');
+            expect(res.body.message).toStrictEqual('What is the best price for a deposit and a nice house?');
+        });
+    });
+});
 })
