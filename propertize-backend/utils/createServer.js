@@ -12,11 +12,11 @@ const createServer = () => {
   const app = express();
   app.use(express.json());
   app.use(cookieParser());
-  app.use('/agents', agentsRouter);
-  app.use('/contact-us', contactRouter);
-  app.use('/users', usersRouter);
-  app.use('/auth', authRouter);
-  app.use('/', propertyRouter);
+  app.use('/api/agents', agentsRouter);
+  app.use('/api/contact-us', contactRouter);
+  app.use('/api/users', usersRouter);
+  app.use('/api/auth', authRouter);
+  app.use('/api/', propertyRouter);
   return app;
 };
 
