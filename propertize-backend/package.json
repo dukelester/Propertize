@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "isolatedModules": true,
+    "verbose": true
   },
   "type": "module",
   "scripts": {
@@ -23,6 +25,8 @@
     "supertest": "^6.3.3"
   },
   "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
     "eslint": "^8.33.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.27.5",
