@@ -21,8 +21,14 @@ export const allContacts = async (req, res, next) => {
   }
 };
 
-export const contactDetails = (req, res, next) => {
-  res.send({ message: 'Info about the contact us' });
+export const contactDetails = async (req, res, next) => {
+  try {
+    const { contactId } = req.params;
+    const found = await Contact.findById(contactId);
+    res.status(200).json(found);
+  } catch (error) {
+    next(error);
+  }
 };
 
 export const deleteContact = (req, res, next) => {
