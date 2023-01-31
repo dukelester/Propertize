@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get('/', getAllAgents);
 router.get('/find/:agentId', getAgentById);
-router.post('/', createAgent);
+router.post('/new', createAgent);
 router.put('/update/:agentId', updateAgent);
 router.delete('/delete/:agentId', deleteAgent);
 

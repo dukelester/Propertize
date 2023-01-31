@@ -1,7 +1,6 @@
 /* eslint-disable import/extensions */
 import Contact from '../models/Contact.js';
 
-/* eslint-disable no-unused-vars */
 export const contactUs = async (req, res, next) => {
   try {
     const newContact = await Contact.create(req.body);
