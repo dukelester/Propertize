@@ -58,5 +58,12 @@ describe('Contact us route', () => {
             expect(res.body.message).toStrictEqual('What is the best price for a deposit and a nice house?');
         });
     });
+    describe('creating a contact with no body', () => {
+        it('should return an 200 status ok for a right data', async () => {
+            const res = await request(app).post(`/api/contact-us/new`)
+            .send({});
+            expect(res.statusCode).toBe(500);
+        });
+    });
 });
 })
