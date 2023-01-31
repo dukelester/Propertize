@@ -8,6 +8,8 @@ import createServer from './utils/createServer.js';
 dotenv.config();
 
 const app = createServer();
+const port = process.env.PORT;
+
 mongoose.connection.on('connected', () => {
   console.log('database connected successfully');
 });
@@ -20,10 +22,12 @@ mongoose.connection.on('disconnected', async (error) => {
 });
 
 const dbConnect = () => {
-  mongoose.connect(process.env.MONGO);
+  try {
+    mongoose.connect(process.env.MONGO);
+  } catch (error) {
+    throw new Error(error);
+  }
 };
-
-const port = process.env.PORT;
 
 app.listen(port, (error) => {
   if (error) {
