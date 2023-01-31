@@ -1,4 +1,5 @@
-import Property from '../models/Property.js'
+/* eslint-disable import/extensions */
+import Property from '../models/Property.js';
 
 export const createProperty = async (req, res, next) => {
   try {
@@ -6,17 +7,17 @@ export const createProperty = async (req, res, next) => {
     const savedProperty = await newProperty.save();
     res.status(201).json(savedProperty);
   } catch (error) {
-      next(error);
-  };
+    next(error);
+  }
 };
 
 export const getAllProperties = async (req, res, next) => {
   try {
-   const allProperties = await Property.find();
-   res.status(200).json(allProperties);
+    const allProperties = await Property.find();
+    res.status(200).json(allProperties);
   } catch (error) {
-      next(error);
-  };
+    next(error);
+  }
 };
 
 export const getPropertyById = async (req, res, next) => {
@@ -25,18 +26,22 @@ export const getPropertyById = async (req, res, next) => {
     const foundProperty = await Property.findById(propertyId);
     res.status(200).jsin(foundProperty);
   } catch (error) {
-      next(error);
-  };
+    next(error);
+  }
 };
 
 export const updateProperty = async (req, res, next) => {
   try {
     const { propertyId } = req.params;
-    const updatedProperty = await Property.findOneAndUpdate(propertyId, { $set: req.body }, { new: true });
+    const updatedProperty = await Property.findOneAndUpdate(
+      propertyId,
+      { $set: req.body },
+      { new: true },
+    );
     res.status(200).json(updatedProperty);
   } catch (error) {
-      next(error);
-  };
+    next(error);
+  }
 };
 
 export const deleteProperty = async (req, res, next) => {
@@ -47,8 +52,8 @@ export const deleteProperty = async (req, res, next) => {
       status: 200,
       success: true,
       message: `Property with the id ${propertyId} has been deleted sucessfully!`,
-    })
+    });
   } catch (error) {
-      next(error);
-  };
+    next(error);
+  }
 };

@@ -1,10 +1,12 @@
-import Agent from '../models/Agent.js'
+/* eslint-disable import/extensions */
+import Agent from '../models/Agent.js';
+
 export const createAgent = async (req, res, next) => {
   try {
     const newAgent = await Agent.create(req.body);
     const savedAgent = await newAgent.save();
     res.status(201).json(savedAgent);
-  } catch(error) {
+  } catch (error) {
     next(error);
   }
 };
@@ -14,8 +16,8 @@ export const getAllAgents = async (req, res, next) => {
     const agents = await Agent.find();
     res.status(200).json(agents);
   } catch (error) {
-      next(error);
-  };
+    next(error);
+  }
 };
 
 export const getAgentById = async (req, res, next) => {
@@ -24,9 +26,8 @@ export const getAgentById = async (req, res, next) => {
     const agent = await Agent.findById(agentId);
     res.status(200).json(agent);
   } catch (error) {
-      next(error);
-  };
-
+    next(error);
+  }
 };
 
 export const updateAgent = async (req, res, next) => {
@@ -35,8 +36,8 @@ export const updateAgent = async (req, res, next) => {
     const updatedAgent = await Agent.findByIdAndUpdate(agentId, { $set: req.body }, { new: true });
     res.status(200).json(updatedAgent);
   } catch (error) {
-      next(error);
-  };
+    next(error);
+  }
 };
 
 export const deleteAgent = async (req, res, next) => {
@@ -49,6 +50,6 @@ export const deleteAgent = async (req, res, next) => {
       message: `Agent with the id ${agentId} has been deleted sucessfully!`,
     });
   } catch (error) {
-      next(error);
-  };
+    next(error);
+  }
 };

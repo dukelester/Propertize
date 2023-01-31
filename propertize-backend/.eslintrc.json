@@ -17,6 +17,6 @@
         "react"
     ],
     "rules": {
-        "jest": false
+        "jest": true
     }
 }
