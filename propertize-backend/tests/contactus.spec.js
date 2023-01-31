@@ -66,4 +66,28 @@ describe('Contact us route', () => {
         });
     });
 });
-})
+describe('deleting a post ', () => {
+    describe('deleting a post with an existing id', () => {
+        it('should return a 200 status ok for a success deleted post with a message', async () => {
+            const contactId = '63d8a1a82ce18a93be4fc4ba';
+            const res = await request(app).delete(`/api/contact-us/delete/${contactId}`);
+            console.log(res.body, res.statusCode)
+            expect(res.statusCode).toBe(200);
+            expect(res.body).toStrictEqual( {
+                status: 200,
+                success: true,
+                message: 'Contact with the id 63d8a1a82ce18a93be4fc4ba has been deleted sucessfully!'
+            });
+        });
+    });
+    describe('deleting a contact Id with an invalid id', () => {
+        it('should return a 500 for an invalid  contact Id', async () => {
+            const contactId = '63d8a1a82ce18a93b4fc4ba';
+            const res = await request(app).delete(`/api/contact-us/delete/${contactId}`);
+            expect(res.body).toStrictEqual({});
+            expect(res.statusCode).toBe(500);
+        });
+    });
+});
+
+});
