@@ -24,7 +24,7 @@ export const getPropertyById = async (req, res, next) => {
   try {
     const { propertyId } = req.params;
     const foundProperty = await Property.findById(propertyId);
-    res.status(200).jsin(foundProperty);
+    res.status(200).json(foundProperty);
   } catch (error) {
     next(error);
   }
