@@ -59,10 +59,22 @@ describe('Users', () => {
   describe('create an user without data', () => {
   it('should return an error if the body is not defined', async () => {
       const res = await request(app).post('/api/users/new').send({})
-      expect(res.statusCode).toBe(500);
+      expect(res.statusCode).toBe(400);
+      expect(res.body.message).toStrictEqual('Bad information format incomplete user details');
+      expect(res.body.status).toBe(400);
   });
   });
-
+  describe('create an user without complete data', () => {
+    it('should return an error if the body is not defined', async () => {
+        const res = await request(app).post('/api/users/new').send({
+          "username": "johndoe",
+          "password": "john2344",
+        })
+        expect(res.statusCode).toBe(400);
+        expect(res.body.message).toStrictEqual('Bad information format incomplete user details');
+        expect(res.body.status).toBe(400);
+    });
+    });
   });
   describe('updating an user details', () => {
       describe('sending the right data to change the user given the id', () => {
