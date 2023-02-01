@@ -29,7 +29,7 @@ describe('Users', () => {
           const userId = '63d915fd20deae497824a7a0';
           const res = await request(app).get(`/api/users/find/${userId}`);
           expect(res.statusCode).toBe(200);
-          expect(res.body._id).toStrictEqual(userId);
+          expect(res.body._id).toBe(userId);
       });
     });
     describe('get user with a wrong user Id ', () => {
@@ -86,8 +86,8 @@ describe('Users', () => {
           });
         })
   });
-  describe('deleting an user details', () => {
-      describe('delete an exixting user with a given id', () => {
+  describe('deleting a user details', () => {
+      describe('delete an existing user with a given id', () => {
         it('should return 200 ok success status code ', async () => {
           const userId = '63d99f83fa830127ed594670';
           const res = await request(app).delete(`/api/users/delete/${userId}`);
@@ -95,11 +95,11 @@ describe('Users', () => {
           expect(res.body).toStrictEqual({
               status: 200,
               success: true,
-              message: `User with the id ${userId} has been deleted sucessfully!`
+              message: `User with the id 63d99f83fa830127ed594670 has been deleted sucessfully!`
           });
       });
       });
-      describe('trying to delete an user with wrong Id', () => {
+      describe('trying to delete a user with wrong Id', () => {
           it('should return an error while trying to update an user', async () => {
             const userId = '63d990ceabdc82dcbbd548';
             const res = await request(app).delete(`/api/users/delete/${userId}`);
