@@ -2,7 +2,7 @@
 import request from 'supertest';
 import mongoose from 'mongoose';
 import * as dotenv from 'dotenv';
-import createServer from '../utils/createServer.js'
+import createServer from '../utils/createServer.js';
 
 dotenv.config();
 const app = createServer();
