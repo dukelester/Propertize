@@ -45,15 +45,15 @@ describe('Users', () => {
     describe('creating an user and saving to the database', () => {
       it('should return a success 201 created message and the user details', async () => {
           const res = await request(app).post('/api/users/new').send({
-            "email": "lester2@gmail.com",
-            "username": "lester24562",
-            "phone": "07342567822",
-            "password": "duke22030"
+            "email": "leste2@gmail.com",
+            "username": "leste24562",
+            "phone": "073467822",
+            "password": "duke2030302"
           });
           expect(res.statusCode).toBe(201);
-          expect(res.body.username).toStrictEqual('lester24562');
-          expect(res.body.phone).toStrictEqual('07342567822');
-          expect(res.body.email).toStrictEqual('lester2@gmail.com');
+          expect(res.body.username).toStrictEqual('leste24562');
+          expect(res.body.phone).toStrictEqual('073467822');
+          expect(res.body.email).toStrictEqual('leste2@gmail.com');
       });
   });
   describe('create an user without data', () => {
