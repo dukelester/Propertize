@@ -1,8 +1,12 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable import/extensions */
-import User from '../models/User.js';
-import { hashUserPassword } from '../utils/passwordHashing.js';
 
-/* eslint-disable no-unused-vars */
+import jwt from 'jsonwebtoken';
+
+import User from '../models/User.js';
+import { hashUserPassword, isPasswordCorrect } from '../utils/passwordHashing.js';
+import createError from '../utils/error.js';
+
 export const userRegister = async (req, res, next) => {
   try {
     const {
@@ -35,8 +39,34 @@ export const userRegister = async (req, res, next) => {
   }
 };
 
-export const userLogin = (req, res, next) => {
-  res.send({ message: 'user login' });
+export const userLogin = async (req, res, next) => {
+  try {
+    const { username, password } = req.body;
+    if (username && password) {
+      const foundUser = await User.findOne({ username });
+      if (!foundUser) return next(createError(404, 'User not found'));
+      if (!isPasswordCorrect(password, foundUser.password)) {
+        return next(createError(
+          404,
+          'Sorry, you have entered wrong user credentials',
+        ));
+      }
+      const { password: userPassword, isAdmin, ...otherDetails } = foundUser._doc;
+      const token = jwt.sign({
+        id: foundUser._id,
+        isAdmin: foundUser.isAdmin,
+      }, process.env.JWT_SECRETE_KEY);
+      res.cookie('access_token', token, { httpOnly: true }).status(200).json({ ...otherDetails });
+    } else {
+      res.status(400).json({
+        success: false,
+        status: 400,
+        message: 'Bad information format',
+      });
+    }
+  } catch (error) {
+    next(error);
+  }
 };
 
 export const passwordReset = (req, res, next) => {
