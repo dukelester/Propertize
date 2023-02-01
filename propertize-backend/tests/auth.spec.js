@@ -52,5 +52,36 @@ describe('Authentication', () => {
         });
       })
   });
-  
-})
+  describe('user login', () => {
+    describe('user login with invalid username', () => {
+      it('should return an error 404 user not found', async () => {
+        const res = await request(app).post('/api/auth/login').send({
+          "username": "freadts",
+          "password": "er78922oiuytyu2",
+        });
+        expect(res.statusCode).toBe(404);
+        expect(res.body).toStrictEqual({});
+      });
+    });
+    describe('user login with invalid password', () => {
+      it('should return an error 404 user not found', async () => {
+        const res = await request(app).post('/api/auth/login').send({
+          "username": "jamesmaj",
+          "password": "er78922oiuytyu2",
+        });
+        expect(res.statusCode).toBe(404);
+        expect(res.body).toStrictEqual({});
+      });
+    });
+    describe('user login with valid credentials for username and password', () => {
+      it('should return 200 ok success status code with user details', async () => {
+        const res = await request(app).post('/api/auth/login').send({
+          "username": "jamesmaj",
+          "password": "duke2030",
+        });
+        expect(res.statusCode).toBe(200);
+        expect(res.body.username).toStrictEqual('jamesmaj');
+      });
+    });
+  });
+});
