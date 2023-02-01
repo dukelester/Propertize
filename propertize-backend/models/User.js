@@ -26,8 +26,14 @@ const UserModel = new Schema({
     max: 12,
     min: 10,
   },
-  firstName: String,
-  lastName: String,
+  firstName: {
+    type: String,
+    required: false,
+  },
+  lastName: {
+    type: String,
+    required: false,
+  },
   about: {
     type: String,
     required: false,
