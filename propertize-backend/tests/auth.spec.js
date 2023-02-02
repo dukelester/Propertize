@@ -44,7 +44,6 @@ describe('Authentication', () => {
             "password": "duke2030",
             "email": "henry034@gmail.com"
           });
-          console.log(res.body)
           expect(res.statusCode).toBe(201);
           expect(res.body.username).toStrictEqual('henry002');
           expect(res.body.email).toStrictEqual('henry034@gmail.com');
@@ -76,11 +75,21 @@ describe('Authentication', () => {
     describe('user login with valid credentials for username and password', () => {
       it('should return 200 ok success status code with user details', async () => {
         const res = await request(app).post('/api/auth/login').send({
-          "username": "jamesmaj",
+          "username": "djangoapis",
           "password": "duke2030",
         });
         expect(res.statusCode).toBe(200);
-        expect(res.body.username).toStrictEqual('jamesmaj');
+        expect(res.body.username).toStrictEqual('djangoapis');
+        expect(res.body.status).toStrictEqual('Active');
+      });
+    });
+    describe('user login with valid credentials for username and password without email confirmation', () => {
+      it('should return 401 error for a user who is not active', async () => {
+        const res = await request(app).post('/api/auth/login').send({
+          "username": "lester24562",
+          "password": "duke2030",
+        });
+        expect(res.statusCode).toBe(401);
       });
     });
   });
