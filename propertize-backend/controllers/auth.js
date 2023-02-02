@@ -79,7 +79,7 @@ export const verifyUserEmail = async (req, res, next) => {
     const { confirmationCode } = req.params;
     const toBeVerified = await User.findOne({ confirmationCode });
     if (!toBeVerified) return next(createError(404, 'This user cannot not be found'));
-    toBeVerified.status = 'Avtive';
+    toBeVerified.status = 'Active';
     await toBeVerified.save();
     return res.status(200).json({
       message: 'Email verified successfully. You can now Login',
