@@ -44,6 +44,7 @@ export const userLogin = async (req, res, next) => {
     const { username, password } = req.body;
     if (username && password) {
       const foundUser = await User.findOne({ username });
+      if (foundUser.status !== 'Active') return next(createError(401, 'Pending Account. Please Verify Your Email!'));
       if (!foundUser) return next(createError(404, 'User not found'));
       if (!isPasswordCorrect(password, foundUser.password)) {
         return next(createError(
