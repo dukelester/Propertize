@@ -74,6 +74,21 @@ export const userLogin = async (req, res, next) => {
   }
 };
 
+export const verifyUserEmail = async (req, res, next) => {
+  try {
+    const { confirmationCode } = req.params;
+    const toBeVerified = await User.findOne({ confirmationCode });
+    if (!toBeVerified) return next(createError(404, 'This user cannot not be found'));
+    toBeVerified.status = 'Avtive';
+    await toBeVerified.save();
+    return res.status(200).json({
+      message: 'Email verified successfully. You can now Login',
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const passwordReset = (req, res, next) => {
   res.send({ message: 'user password reset' });
 };
