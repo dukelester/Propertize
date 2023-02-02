@@ -13,6 +13,8 @@ export const userRegister = async (req, res, next) => {
       username, email, phone, firstName,
       latsName, about, photo, socialLinks, password,
     } = req.body;
+    const userToken = jwt.sign({ email }, process.env.JWT_SECRETE_KEY);
+    console.log(userToken);
     if (username && email && phone && password) {
       const newUser = new User({
         username,
@@ -24,6 +26,7 @@ export const userRegister = async (req, res, next) => {
         photo,
         socialLinks,
         password: hashUserPassword(password),
+        confirmationCode: userToken,
       });
       const savedUser = await newUser.save();
       res.status(201).json(savedUser);
