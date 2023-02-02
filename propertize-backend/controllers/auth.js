@@ -6,6 +6,7 @@ import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
 import { hashUserPassword, isPasswordCorrect } from '../utils/passwordHashing.js';
 import createError from '../utils/error.js';
+import sendConfirmationEmail from '../utils/confirm-email.js';
 
 export const userRegister = async (req, res, next) => {
   try {
@@ -14,7 +15,6 @@ export const userRegister = async (req, res, next) => {
       latsName, about, photo, socialLinks, password,
     } = req.body;
     const userToken = jwt.sign({ email }, process.env.JWT_SECRETE_KEY);
-    console.log(userToken);
     if (username && email && phone && password) {
       const newUser = new User({
         username,
@@ -29,6 +29,7 @@ export const userRegister = async (req, res, next) => {
         confirmationCode: userToken,
       });
       const savedUser = await newUser.save();
+      sendConfirmationEmail(username, email, savedUser.confirmationCode);
       res.status(201).json(savedUser);
     } else {
       res.status(400).json({
