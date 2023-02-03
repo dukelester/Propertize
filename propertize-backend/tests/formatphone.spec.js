@@ -12,8 +12,13 @@ describe('formating a phone number', () => {
     });
   });
   describe('formatting an invalid phone number', () => {
-    it('should return a phone number formatted in kenyan format', () => {
+    it('should return an error for an invalid phone number', () => {
       expect(formatPhoneNumber('745722340')).toStrictEqual('invalid phone');
+    });
+  });
+  describe('formatting an invalid phone number', () => {
+    it('should return an error for an invalid phone number', () => {
+      expect(formatPhoneNumber('074572238940')).toStrictEqual('invalid phone');
     });
   });
 });
