@@ -45,5 +45,5 @@ app.listen(port, (error) => {
     throw new Error();
   }
   dbConnect();
-  console.log(`The server is running at http://localhost:${port}`);
+  console.log(`The server is running at ${process.env.HOST}:${port}`);
 });
