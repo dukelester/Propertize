@@ -27,8 +27,12 @@ const sendConfirmationEmail = (name, email, confirmationCode) => {
         <a href=http://localhost:5000/api/auth/confirm/${confirmationCode}> Click here</a>
         </div>`,
   }).catch((error) => {
-    console.log(error.message);
+    throw new Error(error);
   });
+  return {
+    status: 200,
+    message: 'successfully sent an email'
+  }
 };
 
 export default sendConfirmationEmail;
