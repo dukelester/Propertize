@@ -32,8 +32,8 @@ const sendConfirmationEmail = (name, email, confirmationCode) => {
   });
   return {
     status: 200,
-    message: 'successfully sent an email'
-  }
+    message: 'successfully sent an email',
+  };
 };
 
 export default sendConfirmationEmail;
