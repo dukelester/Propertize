@@ -7,6 +7,7 @@ import User from '../models/User.js';
 import { hashUserPassword, isPasswordCorrect } from '../utils/passwordHashing.js';
 import createError from '../utils/error.js';
 import sendConfirmationEmail from '../utils/confirm-email.js';
+import formatPhoneNumber from '../utils/formatphone.js';
 
 export const userRegister = async (req, res, next) => {
   try {
@@ -19,7 +20,7 @@ export const userRegister = async (req, res, next) => {
       const newUser = new User({
         username,
         email,
-        phone,
+        phone: formatPhoneNumber(phone),
         firstName,
         latsName,
         about,

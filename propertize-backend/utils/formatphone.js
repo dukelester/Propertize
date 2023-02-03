@@ -1,6 +1,7 @@
+import createError from './error.js'
 const formatPhoneNumber = (phoneNumber) => {
   if (phoneNumber.length !== 10 || phoneNumber.at(0) !== '0') {
-    return 'invalid phone';
+    throw new Error();
   }
   return `+254${phoneNumber.slice(1)}`;
 };

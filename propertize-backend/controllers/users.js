@@ -1,13 +1,16 @@
 /* eslint-disable import/extensions */
 import User from '../models/User.js';
 import { hashUserPassword } from '../utils/passwordHashing.js';
+import formatPhoneNumber from '../utils/formatphone.js';
 
 export const createUser = async (req, res, next) => {
   try {
-    const { username, password, email, phone } = req.body;
+    const {
+      username, password, email, phone,
+    } = req.body;
     if (username && password && email && phone) {
       const newUser = new User({
-        username, password: hashUserPassword(password), email, phone
+        username, password: hashUserPassword(password), email, phone: formatPhoneNumber(phone),
       });
       const savedUser = await newUser.save();
       res.status(201).json(savedUser);
@@ -16,7 +19,7 @@ export const createUser = async (req, res, next) => {
         success: false,
         status: 400,
         message: 'Bad information format incomplete user details',
-      })
+      });
     }
   } catch (error) {
     next(error);
