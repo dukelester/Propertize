@@ -31,3 +31,13 @@ export const createNewBlog = async (req, res, next) => {
     next(error);
   }
 };
+
+export const updateBlogById = async (req, res, next) => {
+  try {
+    const { blogId } = req.params;
+    const toBeUpdated = await Blog.findByIdAndUpdate(blogId, { $set: req.body }, { new: true });
+    res.status(200).json(toBeUpdated);
+  } catch (error) {
+    next(error);
+  }
+};
