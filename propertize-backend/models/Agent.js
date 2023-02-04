@@ -28,7 +28,10 @@ const AgentsSchema = new Schema({
     type: String,
     required: true,
   },
-  photo: String,
+  photo: {
+    type: String,
+    required: true,
+  },
 }, { timestamps: true });
 
 export default mongoose.model('Agent', AgentsSchema);
