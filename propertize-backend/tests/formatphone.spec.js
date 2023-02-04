@@ -4,7 +4,7 @@ describe('formating a phone number', () => {
   describe('format a number to return the desired output', () => {
     it('should return a phone number formatted in kenyan format', () => {
       expect(formatPhoneNumber('0745722340')).toStrictEqual('+254745722340');
-      console.log('testing', formatPhoneNumber('074572230'))
+      console.log('testing', formatPhoneNumber('074572230'));
     });
   });
   describe('formatting an invalid phone number', () => {
