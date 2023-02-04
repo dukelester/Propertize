@@ -41,3 +41,16 @@ export const updateBlogById = async (req, res, next) => {
     next(error);
   }
 };
+
+export const deleteBlogById = async (req, res, next) => {
+  try {
+    const { blogId } = req.params;
+    await Blog.findByIdAndDelete(blogId);
+    res.status(200).json({
+      status: 200,
+      message: `The blog with the Id ${blogId} was deleted successfully!`,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
