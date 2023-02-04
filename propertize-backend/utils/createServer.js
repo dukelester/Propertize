@@ -7,6 +7,7 @@ import contactRouter from '../routes/contactus.js';
 import usersRouter from '../routes/users.js';
 import authRouter from '../routes/auth.js';
 import propertyRouter from '../routes/property.js';
+import blogRouter from '../routes/blog.js';
 
 const createServer = () => {
   const app = express();
@@ -17,6 +18,7 @@ const createServer = () => {
   app.use('/api/users', usersRouter);
   app.use('/api/auth', authRouter);
   app.use('/api/', propertyRouter);
+  app.use('/api/blogs', blogRouter);
   return app;
 };
 
