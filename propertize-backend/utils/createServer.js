@@ -13,6 +13,7 @@ const createServer = () => {
   const app = express();
   app.use(express.json());
   app.use(cookieParser());
+  app.use(express.urlencoded({ extended: true }));
   app.use('/api/agents', agentsRouter);
   app.use('/api/contact-us', contactRouter);
   app.use('/api/users', usersRouter);
