@@ -6,6 +6,3 @@ const formatPhoneNumber = (phoneNumber) => {
 };
 
 export default formatPhoneNumber;
-
-
-console.log(formatPhoneNumber('07456782'))
