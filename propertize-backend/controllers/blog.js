@@ -1,7 +1,12 @@
-import Blog from "../models/Blog.js";
+import Blog from '../models/Blog.js';
 
 export const getAllBlogs = async (req, res, next) => {
-  res.send('Get all the blogs from the database');
+  try {
+    const blogs = await Blog.find();
+    res.status(200).json(blogs);
+  } catch (error) {
+    next(error);
+  }
 };
 
 export const getBlogDetails = async (req, res, next) => {
