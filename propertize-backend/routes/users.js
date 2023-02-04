@@ -2,7 +2,7 @@
 import express from 'express';
 import multer from 'multer';
 import {
-  getAllUsers, getUserById, updateUser, deleteUser,createUser,
+  getAllUsers, getUserById, updateUser, deleteUser, createUser,
 } from '../controllers/users.js';
 
 const router = express.Router();
