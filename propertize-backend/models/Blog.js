@@ -27,3 +27,5 @@ const BlogSchema = new Schema({
     required: true,
   },
 }, { timestamps: true });
+
+export default mongoose.model('Blog', BlogSchema);
