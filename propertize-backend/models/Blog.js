@@ -19,10 +19,11 @@ const BlogSchema = new Schema({
   },
   category: {
     type: String,
+    required: true,
     enum: ['Sports', 'Food', 'Health', 'Automobiles', 'Education', 'Travel', 'Life Style', 'Land',
       'Technology', 'Weather', 'Security', 'Other'],
   },
-  createdBy: {
+  author: {
     type: String,
     required: true,
   },
