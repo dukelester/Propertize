@@ -11,7 +11,6 @@ const BlogDetails = () => {
     let publicUrl = process.env.PUBLIC_URL+'/';
 	const { data, loading, error } = useFetch(`${API_HOST}/blogs/find/${blogId}`);
 
-	
     return ( 
 		 <div className="single-blog-page pd-top-120 go-top">
 		  <div className="container">
