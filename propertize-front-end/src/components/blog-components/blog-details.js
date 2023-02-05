@@ -11,11 +11,13 @@ const BlogDetails = () => {
     let publicUrl = process.env.PUBLIC_URL+'/';
 	const { data, loading, error } = useFetch(`${API_HOST}/blogs/find/${blogId}`);
 
-    return (
+	
+    return ( 
 		 <div className="single-blog-page pd-top-120 go-top">
 		  <div className="container">
 		    <div className="row">
-		      <div className="col-lg-8">
+		     { loading ? (<h4> Loading data ...</h4>) : <>
+				<div className="col-lg-8">
 		        <div className="blog-details-page-inner pb-lg-5">
 		          <div className="single-blog-inner bg-none">
 		            <div className="details p-0 border-bottom mb-4 pb-3">
@@ -106,6 +108,8 @@ const BlogDetails = () => {
 		          </div>
 		        </div>
 		      </div>
+			  </>
+			  }
 		       <Sidebar />
 		    </div>
 		  </div>
