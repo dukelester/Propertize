@@ -11,6 +11,7 @@ import Agent from './section-components/agent-v4';
 import FeaturedProperty from './section-components/featured-property';
 import LatestNews from './blog-components/latest-news-v3';
 import Footer from './global-components/footer';
+import Home_V2 from './home-v2'
 
 const Home_V3 = () => {
     return <div>
