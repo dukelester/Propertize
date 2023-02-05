@@ -1,35 +1,33 @@
 import React from 'react';
-import Navbar from './global-components/navbar';
-import Banner from './section-components/banner';
-import Service from './section-components/service';
-import Product from './section-components/product';
-import Video from './section-components/video';
-import ProductV2 from './section-components/product-v2';
-import Testimonial from './section-components/testimonial';
-import Property from './section-components/property';
+import Navbar from './global-components/navbar-v2';
+import Banner from './section-components/banner-v3';
+import About from './section-components/about';
+import Product from './section-components/product-v4';
 import Cta from './section-components/call-to-action';
-import Agent from './section-components/agent';
-import Client from './section-components/client';
-import LatestNews from './blog-components/latest-news';
+import PropertyFilter from './section-components/property-filter';
+import Testimonial from './section-components/testimonial-v3';
+import ProductCategories from './section-components/product-categories-v2';
+import Agent from './section-components/agent-v4';
+import FeaturedProperty from './section-components/featured-property';
+import LatestNews from './blog-components/latest-news-v3';
 import Footer from './global-components/footer';
 
-const Home_V1 = () => {
+const Home_V3 = () => {
     return <div>
         <Navbar />
         <Banner />
-        <Service />
+        <About />
         <Product />
-        <Video />
-        <ProductV2 />
-        <Testimonial />
-        <Property />
         <Cta />
+        <PropertyFilter />
+        <Testimonial />
+        <ProductCategories />
         <Agent />
-        <Client />
+        <FeaturedProperty />
         <LatestNews />
         <Footer />
     </div>
 }
 
-export default Home_V1
+export default Home_V3
 

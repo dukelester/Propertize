@@ -57,38 +57,24 @@ class Navbar extends Component {
 			      </div>
 			      <div className="collapse navbar-collapse" id="dkt_main_menu">
 			        <ul className="navbar-nav menu-open text-center">
-			          <li className="menu-item-has-children current-menu-item">
+			          <li className=" current-menu-item">
 			            <Link to="/">Home</Link>
-			            <ul className="sub-menu">
-			              <li><Link to="/">Home 01</Link></li>
-			              <li><Link to="/home-v2">Home 02</Link></li>
-			              <li><Link to="/home-v3">Home 03</Link></li>
-			            </ul>
+			           
 			          </li>
-			          <li className="menu-item-has-children current-menu-item">
-			            <Link to="/#">Property</Link>
-			            <ul className="sub-menu">
-			              <li><Link to="/property">Property</Link></li>
-			              <li><Link to="/property-grid">Property Grid</Link></li>
-			              <li><Link to="/property-details">Property Details</Link></li>
-			            </ul>
+			          <li className="current-menu-item">
+					  <li><Link to="/property-grid">Property</Link></li>
 			          </li>
-			          <li className="menu-item-has-children current-menu-item">
-			            <a href="#">Pages</a>
-			            <ul className="sub-menu">
-			              <li><Link to="/about">About</Link></li>
-			              <li><Link to="/team">Team</Link></li>
-			              <li><Link to="/sign-in">Sign In</Link></li>
-			              <li><Link to="/sign-up">Sign Up</Link></li>
-			              <li><Link to="/add-property">Add Property</Link></li>
-			            </ul>
+					  
+					  <li className="current-menu-item">
+					  <li><Link to="/sign-in">Sign In</Link></li>
 			          </li>
-			          <li className="menu-item-has-children current-menu-item">
-			            <a href="#">Blog</a>
-			            <ul className="sub-menu">
-			              <li><Link to="/blog">Blog</Link></li>
-			              <li><Link to="/blog-details">Blog Details</Link></li>
-			            </ul>
+					  <li className="current-menu-item">
+					  <li><Link to="/sign-up">Sign Up</Link></li>
+			          </li>
+			          
+			          <li className=" current-menu-item">
+					  <li><Link to="/blog">Blog</Link></li>
+			           
 			          </li>
 			          <li><Link to="/contact">Contact</Link></li>
 			        </ul>

@@ -93,7 +93,7 @@ class Footer_v1 extends Component {
 					<div className="container">
 						<div className="row">
 							<div className="col-md-7 align-self-center">
-								<p>©2023, Copy Right By DukeLester. All Rights Reserved</p>
+								<p>©2022, Copy Right By Solverwp. All Rights Reserved</p>
 							</div>
 							<div className="col-md-5 text-md-right go-top">
 								<ul>

@@ -1,7 +1,7 @@
 {
-  "name": "propertize",
+  "name": "mingrand",
   "version": "0.1.0",
-  "homepage": "",
+  "homepage": "https://solverwp.com/demo/react/mingrand",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -36,9 +36,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@babel/core": "^7.20.12",
-    "babel-jest": "^29.4.1"
   }
 }
