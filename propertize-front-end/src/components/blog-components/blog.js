@@ -21,11 +21,12 @@ const Blog = () => {
 					return(
 					<div className="single-blog-inner" key={blog._id}>
 		          <div className="thumb">
-		            <img src={publicUrl+"assets/img/blog/1.png"} alt="img" />
+				  {blog.image ?  <img src={blog.image} alt="img" /> :
+					<img src={publicUrl+"assets/img/blog/3.png"} alt="img" /> }
 		          </div> 
 		          <div className="details">
 		            <div className="cat"><Link to="/blog-details">{blog.category}</Link></div>
-		            <h3><Link to="/blog-details">{blog.title}</Link></h3>
+		            <h3><Link to={`/blog-details/${blog._id}`}>{blog.title}</Link></h3>
 		            <ul className="meta-inner">
 		              <li><img src={publicUrl+"assets/img/icon/1.png"} alt="img" /> By {blog.author}</li>
 		              <li><img src={publicUrl+"assets/img/icon/2.png"} alt="img" /> {new Date(blog.createdAt).toUTCString()}</li>
@@ -40,7 +41,7 @@ const Blog = () => {
 		                </div>
 		              </div>
 		              <div className="col-5 align-self-center text-right">
-		                <Link className="read-more" to="/blog-details">Read More <i className="la la-arrow-right" /></Link>
+		                <Link className="read-more" to={`/blog-details/${blog._id}`}>Read More <i className="la la-arrow-right" /></Link>
 		              </div>
 		            </div>
 		          </div>
