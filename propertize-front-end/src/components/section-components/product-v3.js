@@ -11,7 +11,7 @@ class ProductV3 extends Component {
     return  <div className="product-area pd-top-118 pd-bottom-90 go-top">
 			  <div className="container">
 			    <div className="section-title text-center">
-			      <h6>We are offring the best real estate</h6>
+			      <h6>We are offering the best real estate</h6>
 			      <h2>Best House For You</h2>
 			    </div>
 			    <div className="row justify-content-center">

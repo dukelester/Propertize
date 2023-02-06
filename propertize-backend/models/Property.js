@@ -21,6 +21,7 @@ const PropertySchema = new Schema({
   },
   images: {
     type: [String],
+    required: true,
   },
   city: {
     type: String,
@@ -42,6 +43,7 @@ const PropertySchema = new Schema({
   },
   propertyType: {
     type: String,
+    required: true,
   },
   details: {
     type: [String],
@@ -60,6 +62,8 @@ const PropertySchema = new Schema({
   },
   propertyFor: {
     type: String, // rent, buy, build
+    enum: ['RENT', 'BUY', 'BUILD'],
+    required: true,
   },
   category: {
     type: String,
