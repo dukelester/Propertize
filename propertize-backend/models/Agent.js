@@ -21,8 +21,17 @@ const AgentsSchema = new Schema({
     type: String,
     required: true,
   },
-  socialLinks: {
-    type: [String],
+  facebook: {
+    type: String,
+  },
+  twitter: {
+    type: String,
+  },
+  instagram: {
+    type: String,
+  },
+  linkedn: {
+    type: String,
   },
   agencyType: {
     type: String,

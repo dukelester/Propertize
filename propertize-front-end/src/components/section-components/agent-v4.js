@@ -33,10 +33,10 @@ const AgentV4 = () => {
                         <h4>{agent.fullName}</h4>
                         <h6>{agent.company}</h6>
                         <ul className="social-area style-2">
-                          <li><a href="#"><i className="fab fa-facebook-f" aria-hidden="true" /></a></li>
-                          <li><a href="#"><i className="fab fa-linkedin-in" aria-hidden="true" /></a></li>
-                          <li><a href="#"><i className="fab fa-instagram" aria-hidden="true" /></a></li>
-                          <li><a href="#"><i className="fab fa-twitter" aria-hidden="true" /></a></li>
+                          <li><a href={agent.facebook}><i className="fab fa-facebook-f" aria-hidden="true" /></a></li>
+                          <li><a href={agent.linkedn}><i className="fab fa-linkedin-in" aria-hidden="true" /></a></li>
+                          <li><a href={agent.instagram}><i className="fab fa-instagram" aria-hidden="true" /></a></li>
+                          <li><a href={agent.twitter}><i className="fab fa-twitter" aria-hidden="true" /></a></li>
                         </ul>
                       </div>
                     </div>
