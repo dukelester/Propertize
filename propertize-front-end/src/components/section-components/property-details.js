@@ -40,8 +40,12 @@ function PropertyDetails() {
                   KES
                   {data.price}
                 </h4>
+
                 <div className="btn-wrap">
-                  <a className="btn btn-blue btn-sm" href="#">{data.propertyFor}</a>
+                {!data.propertyFor &&
+                  <a className="btn btn-blue btn-sm" href="#">RENT</a>
+                }
+                {data.propertyFor && <a className="btn btn-blue btn-sm" href="#">{data.propertyFor}</a>}
                 </div>
                 <ul>
                   <li>
