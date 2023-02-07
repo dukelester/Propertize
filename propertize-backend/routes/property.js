@@ -2,7 +2,7 @@
 import express from 'express';
 import multer from 'multer';
 import {
-  createProperty, deleteProperty, getAllProperties, getPropertyById, updateProperty,
+  createProperty, deleteProperty, getAllProperties, getFeaturedProperty, getPropertyById, updateProperty,
 } from '../controllers/property.js';
 
 const router = express.Router();
@@ -13,5 +13,6 @@ router.get('/find/:propertyId', getPropertyById);
 router.post('/', upload.array('images'), createProperty);
 router.put('/update/:propertyId', updateProperty);
 router.delete('/delete/:propertyId', deleteProperty);
+router.get('/featured', getFeaturedProperty);
 
 export default router;

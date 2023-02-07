@@ -57,3 +57,12 @@ export const deleteProperty = async (req, res, next) => {
     next(error);
   }
 };
+
+export const getFeaturedProperty = async (req, res, next) => {
+  try {
+    const featured = await Property.find({ featured: true});
+    res.status(200).json(featured);
+  } catch (error) {
+      next(error);
+  };
+}
