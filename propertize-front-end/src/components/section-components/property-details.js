@@ -96,6 +96,7 @@ function PropertyDetails() {
                 </div>
               </div>
             }
+            {data.amenities && 
               <div className="single-property-grid">
                 <h4>Amenities</h4>
                 <div className="row">
@@ -113,6 +114,8 @@ function PropertyDetails() {
                   </div>
                 </div>
               </div>
+            }
+            {data.additionalDetails &&
               <div className="single-property-grid">
                 <h4>Additional Details</h4>
                 <div className="row">
@@ -128,6 +131,7 @@ function PropertyDetails() {
 
                 </div>
               </div>
+            }
               <div className="single-property-grid">
                 <h4>Proparty Attachment</h4>
                 <div className="row">
