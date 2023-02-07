@@ -9,7 +9,6 @@ function PropertyDetails() {
   const publicUrl = `${process.env.PUBLIC_URL}/`;
   const propertyId = location.pathname.split('/')[2];
   const { data, loading, error } = useFetch(`${API_HOST}/find/${propertyId}`);
-  console.log(data.images);
 
   return (
 
