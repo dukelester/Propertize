@@ -69,6 +69,29 @@ const PropertySchema = new Schema({
     type: String,
     required: true,
   },
+  bedrooms: {
+    type: Number,
+    required: true,
+  },
+  bathrooms: {
+    type: Number,
+    required: true,
+  },
+  rooms: {
+    type: Number,
+    required: true,
+  },
+  kitchen: {
+    type: Number,
+    required: true,
+  },
+  livingroom: {
+    type: Number,
+    required: true,
+  },
+  area: {
+    type: String,
+  },
 }, { timestamps: true });
 
 export default mongoose.model('Property', PropertySchema);
