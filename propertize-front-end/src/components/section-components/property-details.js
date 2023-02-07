@@ -30,9 +30,16 @@ function PropertyDetails() {
                   {' '}
                 </p>
                 <ul>
-                  <li>3 Bedroom</li>
-                  <li>Bathroom</li>
-                  <li>1026 sqft</li>
+                  <li>{data.bedrooms} Bedroom</li>
+                  <li>{data.bathrooms} Bathroom</li>
+                  {data.featured &&
+                  <li>
+                  <div className="btn-area">
+                    <Link className="btn btn-base btn"><strong>FEATURED</strong></Link>
+                
+                    </div>
+                  </li>
+                  }
                 </ul>
               </div>
               <div className="col-lg-5 text-lg-right">
