@@ -80,7 +80,7 @@ function PropertyDetails() {
             <div className="single-property-details-inner">
               <h4>{data.title}</h4>
               <p>{data.description}</p>
-
+                { data.bedroom &&
               <div className="single-property-grid">
                 <h4>Poperty Details</h4>
                 <div className="row">
@@ -92,73 +92,23 @@ function PropertyDetails() {
                       <li>Type: {data.propertyType}</li>
                     </ul>
                   </div>
-                  <div className="col-md-4">
-                    <ul>
-                      <li>Bedrooms: 3</li>
-                      <li>Livingroom: 2</li>
-                      <li>Year Built: 2020</li>
-                      <li>Area: 1258</li>
-                    </ul>
-                  </div>
-                  <div className="col-md-4">
-                    <ul>
-                      <li>Bedrooms: 3</li>
-                      <li>All Rooms: 12</li>
-                      <li>Kitchen: 2</li>
-                      <li>Type: Privet House</li>
-                    </ul>
-                  </div>
+
                 </div>
               </div>
+            }
               <div className="single-property-grid">
                 <h4>Amenities</h4>
                 <div className="row">
                   <div className="col-md-4">
                     <ul>
-                      <li>
+                    {data.amenities && data.amenities.map((amenity) => {
+                      return (
+                        <li>
                     <i className="fa fa-check" />
-                    Air Conditionar
-</li>
-                      <li>
-                    <i className="fa fa-check" />
-                    Fencing
-</li>
-                      <li>
-                    <i className="fa fa-check" />
-                    Internet
-</li>
-                    </ul>
-                  </div>
-                  <div className="col-md-4">
-                    <ul>
-                      <li>
-                    <i className="fa fa-check" />
-                    Wardrobes
-</li>
-                      <li>
-                    <i className="fa fa-check" />
-                    School
-</li>
-                      <li>
-                    <i className="fa fa-check" />
-                    Park
-</li>
-                    </ul>
-                  </div>
-                  <div className="col-md-4">
-                    <ul>
-                      <li>
-                    <i className="fa fa-check" />
-                    Dishwasher
-</li>
-                      <li>
-                    <i className="fa fa-check" />
-                    Floor Covering
-</li>
-                      <li>
-                    <i className="fa fa-check" />
-                    Internet
-</li>
+                    {amenity}
+                    </li>
+                      )
+                    })}
                     </ul>
                   </div>
                 </div>
@@ -168,25 +118,14 @@ function PropertyDetails() {
                 <div className="row">
                   <div className="col-md-4">
                     <ul>
-                      <li>Remodale Year: 3</li>
-                      <li>Amenites: Half of Fame</li>
-                      <li>Equepment: Grill-gass</li>
+                    {data.additionalDetails && data.additionalDetails.map((detail) => {
+                      return (
+                        <li>{detail}</li>
+                      )
+                    })}
                     </ul>
                   </div>
-                  <div className="col-md-4">
-                    <ul>
-                      <li>Diposit: 7065$</li>
-                      <li>Pool Size: 1620</li>
-                      <li>Additional Room: 2</li>
-                    </ul>
-                  </div>
-                  <div className="col-md-4">
-                    <ul>
-                      <li>Ground: 2</li>
-                      <li>Additional Room: 2</li>
-                      <li>Floor: 1203</li>
-                    </ul>
-                  </div>
+
                 </div>
               </div>
               <div className="single-property-grid">
