@@ -29,7 +29,7 @@ const FeaturedProperty = () => {
 			<img src={property.images[0]} alt="img" />
 			}
 			<div className="btn-area">
-				<Link className="btn btn-base btn-sm" to="/property">{property.propertyFor}</Link>
+				<Link className="btn btn-base btn-sm">{property.propertyFor}</Link>
 			</div>
 			</div> 
 			<div className="product-wrap-details">
