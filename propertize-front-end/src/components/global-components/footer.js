@@ -43,10 +43,13 @@ class Footer_v1 extends Component {
 								<div className="widget widget_about">
 									<h4 className="widget-title">Company</h4>
 									<div className="details">
-										<p>Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, consectetur et adipisicing  eiusmod tempor incididunt labore</p>
-										<p><i className="fas fa-map-marker-alt" /> 420 Love Sreet 133/2 Mirpur City, Dhaka</p>
-										<p><i className="fas fa-phone-volume" /> +(066) 19 5017 800 628</p>
-										<p><i className="fas fa-envelope" /> info.contact@gmail.com</p>
+										<p>Full-service real estate firm dedicated to providing exceptional service and support to
+										our clients. With years of experience and a passion for the industry,
+										we have established ourselves as a trusted and reliable partner for all your real
+										estate needs.etur et adipisicing  eiusmod tempor incididunt labore</p>
+										<p><i className="fas fa-map-marker-alt" /> 2003 Juja Street, Nairobi, Kenya</p>
+										<p><i className="fas fa-phone-volume" /> +(254)799443070</p>
+										<p><i className="fas fa-envelope" /> info@propertize.com</p>
 									</div>
 								</div>
 							</div>
@@ -66,7 +69,7 @@ class Footer_v1 extends Component {
 								<div className="widget widget_subscribe mb-4">
 									<h4 className="widget-title">Newslatter</h4>
 									<div className="details">
-										<p>Lorem ipsum dolor sit amet,</p>
+										<p>Get our weekly newsletter,</p>
 										<div className="footer-subscribe-inner">
 											<input type="text" placeholder="Your Mail" />
 											<a className="btn btn-base" href="#">Subscribe</a>
@@ -93,7 +96,7 @@ class Footer_v1 extends Component {
 					<div className="container">
 						<div className="row">
 							<div className="col-md-7 align-self-center">
-								<p>©2022, Copy Right By Solverwp. All Rights Reserved</p>
+								<p>©2023, Copy Right By Propertize. All Rights Reserved</p>
 							</div>
 							<div className="col-md-5 text-md-right go-top">
 								<ul>
