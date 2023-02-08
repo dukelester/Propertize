@@ -85,12 +85,12 @@ const PropertySchema = new Schema({
     type: Number,
     required: true,
   },
-  livingroom: {
+  livingRoom: {
     type: Number,
     required: true,
   },
   area: {
-    type: String,
+    type: Number,
   },
 }, { timestamps: true });
 

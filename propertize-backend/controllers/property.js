@@ -2,8 +2,9 @@
 import Property from '../models/Property.js';
 
 export const createProperty = async (req, res, next) => {
+  console.log(req.files[0])
   try {
-    const newProperty = await Property.create(req.body);
+    const newProperty = new Property({ ...req.body, images: [req.files[0].path]});
     const savedProperty = await newProperty.save();
     res.status(201).json(savedProperty);
   } catch (error) {

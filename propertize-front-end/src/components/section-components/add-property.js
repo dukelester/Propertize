@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import FormData from 'form-data';
 
+import API_HOST from '../../configs';
+import { parse } from 'html-react-parser';
 const AddProperty = () => {
   let publicUrl = process.env.PUBLIC_URL+'/'
   const [title, setTitle] = useState('');
@@ -22,17 +26,49 @@ const AddProperty = () => {
   const [zip, setZip] = useState('');
   const [category, setCategory] = useState('')
   const [attachments, setAttachments] = useState('')
+  const [propertyType, setPropertyType] = useState('')
   
-  const handleChange = (event) => {
-    setPropertyDetails({ [event.target.name]: event.target.value })
-  }
-  const handleSubmit = (event) => {
+  const propertyForm = new FormData();
+  propertyForm.append('title', title);
+  propertyForm.append('price', parseInt(price));
+  propertyForm.append('propertyFor', propertyFor);
+  propertyForm.append('latitude', parseFloat(latitude));
+  propertyForm.append('longitude', parseFloat(longitude));
+  propertyForm.append('area', parseInt(area));
+  propertyForm.append('rooms', parseInt(rooms));
+  propertyForm.append('bathrooms', parseInt(bathrooms));
+  propertyForm.append('bedrooms', parseInt(bedrooms));
+  propertyForm.append('kitchen', parseInt(kitchen));
+  propertyForm.append('livingRoom', parseInt(livingRoom));
+  propertyForm.append('amenities', amenities);
+  propertyForm.append('address', address);
+  propertyForm.append('city', city);
+  propertyForm.append('country', country);
+  propertyForm.append('description', description);
+  propertyForm.append('images', images);
+  propertyForm.append('zip', zip);
+  propertyForm.append('category', category);
+  propertyForm.append('attachments', attachments);
+  propertyForm.append('propertyType', propertyType);
+
+  console.log(propertyForm)
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    
+    try {
+       const response = await axios.post(`${API_HOST}/`, propertyForm, 
+       { headers: {'Content-Type': 'multipart/form-data'}}
+       )
+       console.log(response.data);
+    } catch (error) {
+        console.log(error);
+    };
+    
   }
 
   return <div className="add-property-area pd-top-120">
   <div className="container">
-    <form>
+    <form method='post' onSubmit={handleSubmit} encType="multipart/form-data">
       <div className="btn btn-base hover-none">Property Basic Information</div>
       <div className="property-form-grname">
         <div className="row">
@@ -54,17 +90,14 @@ const AddProperty = () => {
               />
             </label>
           </div>
+        
           <div className="col-md-6">
-            <div className="single-select-inner style-bg-border">
-              <span className="label" name="propertyFor" 
-              onChange={(e) => setPropertyFor(e.target.value)}>Property For</span>
-              <select>
-                <option value={'RENT'}>RENT</option>
-                <option value={'BUY'}>BUY</option>
-                <option value={"BUILD"}>BUILD</option>
-
-              </select>
-            </div>
+            <label className="single-input-inner style-bg-border">
+              <span className="label">Property For</span>
+              <input type="text" required placeholder='RENT' name="latitude"
+                onChange={(e) => setPropertyFor(e.target.value)}
+              />
+            </label>
           </div>
           <div className="col-md-6">
             <label className="single-input-inner style-bg-border">
@@ -95,83 +128,54 @@ const AddProperty = () => {
             </label>
           </div>
           
+         
           <div className="col-md-6">
-            <div className="single-select-inner style-bg-border">
-              <span className="label" name='rooms' 
-              onChange={(e) => setRooms(e.target.value)}>Total Rooms</span>
-              <select>
-                <option value={1}>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={4}>4</option>
-                <option value={5}>5</option>
-                <option value={6}>6</option>
-              </select>
-            </div>
+            <label className="single-input-inner style-bg-border">
+              <span className="label">Total Rooms</span>
+              <input type="number" name='attachments'
+               onChange={(e) => setRooms(e.target.value)} placeholder='2'/>
+            </label>
           </div>
           <div className="col-md-6">
-            <div className="single-select-inner style-bg-border">
-              <span className="label" name='bedrooms' 
-              onChange={(e) => setBedrooms(e.target.value)}>Bedrooms</span>
-              <select>
-              <option value={1}>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={4}>4</option>
-                <option value={5}>5</option>
-                <option value={6}>6</option>
-              </select>
-            </div>
+            <label className="single-input-inner style-bg-border">
+              <span className="label">Bedrooms</span>
+              <input type="number" name='attachments' 
+               onChange={(e) => setBedrooms(e.target.value)} placeholder='2'/>
+            </label>
           </div>
           <div className="col-md-6">
-            <div className="single-select-inner style-bg-border">
-              <span className="label" name='bathrooms'
-              onChange={(e) => setBathrooms(e.target.value)}>Bathrooms</span>
-              <select>
-              <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={4}>4</option>
-                <option value={5}>5</option>
-                <option value={6}>6</option>
-              </select>
-            </div>
+            <label className="single-input-inner style-bg-border">
+              <span className="label">Bathrooms</span>
+              <input type="number" name='attachments' 
+               onChange={(e) => setBathrooms(e.target.value)} placeholder='2'/>
+            </label>
           </div>
           <div className="col-md-6">
-            <div className="single-select-inner style-bg-border">
-              <span className="label" name='kitchen'
-              onChange={(e) => setKitchen(e.target.value)}>Kitchen</span>
-              <select>
-              <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={4}>4</option>
-                <option value={5}>5</option>
-                <option value={6}>6</option>
-              </select>
-            </div>
+            <label className="single-input-inner style-bg-border">
+              <span className="label">Kitchen</span>
+              <input type="number" name='attachments' 
+               onChange={(e) => setKitchen(e.target.value)} placeholder='2'/>
+            </label>
           </div>
           <div className="col-md-6">
-            <div className="single-select-inner style-bg-border">
-              <span className="label" name='livingroom' 
-              onChange={(e) => setLivingRoom(e.target.value)}>Livingroom</span>
-              <select>
-              <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={4}>4</option>
-                <option value={5}>5</option>
-                <option value={6}>6</option>
-              </select>
-            </div>
+            <label className="single-input-inner style-bg-border">
+              <span className="label">Living rooms</span>
+              <input type="number" name='attachments' 
+              onChange={(e) => setLivingRoom(e.target.value)} placeholder='2'/>
+            </label>
           </div>
           <div className="col-md-6">
             <label className="single-input-inner style-bg-border">
               <span className="label">Attachments</span>
-              <input type="text" name='attachments' onChange={(e) => setAttachments(e.target.value)}/>
+              <input type="text" name='attachments'
+               onChange={(e) => setAttachments(e.target.value)}/>
             </label>
           </div>
           <div className="col-md-6">
             <label className="single-input-inner style-bg-border">
               <span className="label">Amenities</span>
-              <input type="text" name='amenities' onChange={(e) => setAmenities(e.target.value)}/>
+              <input type="text" name='amenities' 
+              onChange={(e) => setAmenities(e.target.value)}/>
             </label>
           </div>
           <div className="col-md-6">
@@ -179,6 +183,14 @@ const AddProperty = () => {
               <span className="label">Category</span>
               <input type="text" name='category' required placeholder='Villa'
                 onChange={(e) => setCategory(e.target.value)}
+              />
+            </label>
+          </div>
+          <div className="col-md-6">
+            <label className="single-input-inner style-bg-border">
+              <span className="label">Property Type</span>
+              <input type="text" name='category' required placeholder='Double cabin'
+                onChange={(e) => setPropertyType(e.target.value)}
               />
             </label>
           </div>
@@ -261,7 +273,7 @@ const AddProperty = () => {
             </label>
           </div>
           <div className="col-12 text-center mb-4">
-            <button className="btn btn-base" onSubmit={handleSubmit}>Submit Now</button>
+            <button type='submit' className="btn btn-base" onSubmit={handleSubmit}>Submit Now</button>
           </div>
         </div>
       </div>

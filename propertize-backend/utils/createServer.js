@@ -9,12 +9,14 @@ import usersRouter from '../routes/users.js';
 import authRouter from '../routes/auth.js';
 import propertyRouter from '../routes/property.js';
 import blogRouter from '../routes/blog.js';
+import path  from 'path';
 
 const createServer = () => {
   const app = express();
   app.use(express.json());
   app.use(cors());
   app.use(cookieParser());
+  app.use('/static', express.static('uploads'))
   app.use(express.urlencoded({ extended: true }));
   app.use('/api/agents', agentsRouter);
   app.use('/api/contact-us', contactRouter);
