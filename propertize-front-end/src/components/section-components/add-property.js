@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import Alert from '@mui/material/Alert';
 import axios from 'axios';
 import FormData from 'form-data';
 
 import API_HOST from '../../configs';
-import { parse } from 'html-react-parser';
+import { useHistory } from 'react-router-dom';
+
 const AddProperty = () => {
+  const history = useHistory();
   let publicUrl = process.env.PUBLIC_URL+'/'
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
@@ -27,7 +30,7 @@ const AddProperty = () => {
   const [category, setCategory] = useState('')
   const [attachments, setAttachments] = useState('')
   const [propertyType, setPropertyType] = useState('')
-  
+
   const propertyForm = new FormData();
   propertyForm.append('title', title);
   propertyForm.append('price', parseInt(price));
@@ -51,19 +54,23 @@ const AddProperty = () => {
   propertyForm.append('attachments', attachments);
   propertyForm.append('propertyType', propertyType);
 
-  console.log(propertyForm)
   const handleSubmit = async (event) => {
     event.preventDefault();
     
     try {
-       const response = await axios.post(`${API_HOST}/`, propertyForm, 
+       const response = await axios.post(`${API_HOST}/`, propertyForm,
        { headers: {'Content-Type': 'multipart/form-data'}}
        )
-       console.log(response.data);
+       if (response.status === 201) {
+       setTimeout(() => {
+        <Alert severity="success">The property was successfuly created!</Alert>
+       }, 3000);
+
+       history.push('/')
+      }
     } catch (error) {
         console.log(error);
     };
-    
   }
 
   return <div className="add-property-area pd-top-120">
