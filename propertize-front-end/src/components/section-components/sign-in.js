@@ -22,7 +22,8 @@ const SignIn = () => {
 				"Content-Type": "application/json"
 			}
 		});
-		dispatch({ type: 'LOGIN_SUCCESS', paylod: response.data });
+		dispatch({ type: 'LOGIN_SUCCESS', payload: response.data });
+		console.log(response.data)
 		history.push('/');
 	} catch (error) {
 		console.log(error);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, HashRouter, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import HomeV1 from './components/home-v1';
 import HomeV2 from './components/home-v2';
 import HomeV3 from './components/home-v3';
@@ -15,6 +15,7 @@ import AddProperty from './components/add-property';
 import Contact from './components/contact';
 import Blog from './components/blog';
 import BlogDetails from './components/blog-details';
+import { AuthContextProvider } from './context/AuthContext';
 
 
 
@@ -22,6 +23,7 @@ import BlogDetails from './components/blog-details';
 class Root extends Component {
     render() {
         return(
+            <AuthContextProvider>
                 <HashRouter basename="/">
 	                <div>
 	                <Switch>
@@ -42,6 +44,7 @@ class Root extends Component {
 	                </Switch>
 	                </div>
                 </HashRouter>
+                </AuthContextProvider>
         )
     }
 }
