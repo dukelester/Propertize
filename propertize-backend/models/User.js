@@ -40,7 +40,7 @@ const UserModel = new Schema({
   },
   photo: {
     type: String,
-    required: true,
+    required: false,
   },
   socialLinks: [String],
   isAdmin: {
