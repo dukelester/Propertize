@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext} from 'react';
 import FormData from 'form-data';
 
 import axios from 'axios';
 
 import API_HOST from '../../configs'
 import { Link, useHistory } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 
 const SignUp = () => {
 	const history = useHistory();
+	const { user } = useContext(AuthContext);
+    if (user) {
+		history.push('/')
+	}
+
 	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
 	const [phone, setPhone] = useState('');
