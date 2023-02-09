@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import FormData from 'form-data';
 import API_HOST from '../../configs'
 import { AuthContext } from '../../context/AuthContext';
@@ -57,7 +57,7 @@ const SignIn = () => {
 			</div>
 			<div className="col-12">
 				<a href="#">Forgotten Your Password</a>
-				<a href="signup.html"><strong>Signup</strong></a>
+				<Link to="/sign-up"><strong> Signup</strong></Link>
 			</div>
 			</div>
 		</form>
