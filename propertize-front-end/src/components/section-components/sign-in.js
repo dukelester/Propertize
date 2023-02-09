@@ -7,6 +7,10 @@ import { AuthContext } from '../../context/AuthContext';
 
 const SignIn = () => {
   const history = useHistory();
+  const { user } = useContext(AuthContext);
+  if (user) {
+	history.push('/');
+  };
   const { loading, error, dispatch } = useContext(AuthContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
