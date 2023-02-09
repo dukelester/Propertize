@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Alert from '@mui/material/Alert';
 import axios from 'axios';
 import FormData from 'form-data';
 
 import API_HOST from '../../configs';
 import { useHistory } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 
 const AddProperty = () => {
   const history = useHistory();
+  const { user } = useContext(AuthContext);
+  if (!user) {
+    history.push('/sign-in');
+  };
   let publicUrl = process.env.PUBLIC_URL+'/'
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
@@ -56,7 +61,6 @@ const AddProperty = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
     try {
        const response = await axios.post(`${API_HOST}/`, propertyForm,
        { headers: {'Content-Type': 'multipart/form-data'}}
