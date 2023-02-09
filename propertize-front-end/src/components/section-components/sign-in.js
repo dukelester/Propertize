@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import FormData from 'form-data';
 import API_HOST from '../../configs'
+import { AuthContext } from '../../context/AuthContext';
 
 const SignIn = () => {
+  const history = useHistory();
+  const { loading, error, dispatch } = useContext(AuthContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const loginForm = new FormData();
@@ -12,14 +15,21 @@ const SignIn = () => {
   loginForm.append('password', password);
   const handleSubmit = async (event) => {
 	event.preventDefault();
-	const response = await axios.post(`${API_HOST}/auth/login`, loginForm, {
-		"headers": {
-			"Content-Type": "application/json"
-		}
-	});
-	console.log(response.data, response.data.access_token);
+	dispatch({ type: 'LOGIN_START' });
+	try {
+		const response = await axios.post(`${API_HOST}/auth/login`, loginForm, {
+			"headers": {
+				"Content-Type": "application/json"
+			}
+		});
+		dispatch({ type: 'LOGIN_SUCCESS', paylod: response.data });
+		history.push('/');
+	} catch (error) {
+		console.log(error);
+		dispatch({ type: 'LOGIN_FAIL', payload: error.response.data })
+	};
   }
-  let publicUrl = process.env.PUBLIC_URL+'/'
+
   return (
   <div className="signin-page-area pd-top-100 ">
 	<div className="container">
